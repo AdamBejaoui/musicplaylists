@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const handleDelete = async (id) => {
     try{
@@ -19,7 +20,7 @@ const Onesong =({song})=> {
           <img src={song.cover} alt={song.title} />
           <p>{song.desc}</p>
           <button className='delete' onClick={()=>handleDelete(song.id)}>Delete</button>
-          <button className='update'>Update</button>
+          <button className='update'><Link to="/update">Update</Link></button>
         </div>
       );
     };
