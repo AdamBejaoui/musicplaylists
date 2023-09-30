@@ -23,7 +23,7 @@ console.log(song)
   e.preventDefault()
 try{
 await axios.post("http://localhost:3001/songs",song)
-navigate("/")
+navigate("/home")
 }catch(err){
 console.log(err)
 }

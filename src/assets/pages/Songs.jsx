@@ -8,6 +8,7 @@ const [songs, setSongs] = useState([])
 const [oneSong, setOneSong] = useState(null);
 const [isSongVisible, setIsSongVisible] = useState(false)
 
+
 useEffect(() => {
    const fetchAllSongs = async () => {
     try {
@@ -34,8 +35,9 @@ setSongs(res.data)
 
 
     return <div>
+        <button className='logout'><Link to="/">logout</Link></button>
     <h1 onClick={() => setIsDetailVisible(!isSongVisible)}>Songs+ Playlist</h1>
-        
+    <p>Welcome,</p>
         <div className="songs">
         
             {songs.map(song=>(

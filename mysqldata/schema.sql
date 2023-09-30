@@ -15,6 +15,18 @@ CREATE SCHEMA IF NOT EXISTS `playlist` DEFAULT CHARACTER SET utf8 ;
 USE `playlist` ;
 
 -- -----------------------------------------------------
+-- Table `playlist`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `playlist`.`users` (
+  `userId` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`userId`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `playlist`.`songs`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `playlist`.`songs` (
@@ -22,7 +34,14 @@ CREATE TABLE IF NOT EXISTS `playlist`.`songs` (
   `title` VARCHAR(45) NOT NULL,
   `desc` VARCHAR(225) NOT NULL,
   `cover` VARCHAR(500) NULL,
-  PRIMARY KEY (`id`))
+  `users_userId` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_songs_users_idx` (`users_userId` ASC) VISIBLE,
+  CONSTRAINT `fk_songs_users`
+    FOREIGN KEY (`users_userId`)
+    REFERENCES `playlist`.`users` (`userId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
